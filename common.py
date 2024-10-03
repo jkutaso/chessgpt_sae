@@ -57,7 +57,7 @@ autoencoder_group_path = "/root/chessgpt_git/chessgpt_git/SAE_BoardGameEval/auto
 autoencoder_path = "/root/chessgpt_git/chessgpt_git/SAE_BoardGameEval/autoencoders/testing_chess/trainer4/"
 
 
-def get_train_dataset(device):
+def get_dataset(device):
     train_dataset_name = f"chess_train_dataset.pkl"
 
     if os.path.exists(train_dataset_name):
@@ -68,7 +68,7 @@ def get_train_dataset(device):
         train_data = eval_sae.construct_dataset(
             False,
             [chess_utils.board_to_check_state],
-            1000,
+            10000,
             split="train",
             device=device,
             precompute_dataset=True,
